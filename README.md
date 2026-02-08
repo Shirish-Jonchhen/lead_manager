@@ -1,16 +1,55 @@
 # lead_manager
 
-A new Flutter project.
+## Stack used
+- Flutter (Material 3)
+- Dart
+- Hive + hive_flutter (local persistence)
+- shared_preferences (login state)
+- flutter_slidable (swipe actions)
+- State management via `ValueListenableBuilder` with Hive listenables
 
-## Getting Started
+## App flow
+1. Splash Screen
+    1. Starting point of the app
+    2. Checks wether the user is logged in or not
+    3. If Logged in navigates to leads listing screen
+    4. Else navigates to login screen
+2. Login Screen
+    1. Authentication Screen
+    2. Takes username and password to authenticated (admin/admin hardcoded)
+    3. After successful login navigates to leads list screen
+    4. Else shows error message in a snack bar.
+3. Leads Listing Screen
+    1. Loads leads from Hive
+    2. Supports search by name, email, phone, or service
+    3. Edit and delete actions via right to left swipe on a lead
+4. Lead Form Screen
+    1. Add new lead or edit existing lead
+    2. Validates inputs and saves to Hive
 
-This project is a starting point for a Flutter application.
+## Improvements with more time
+1. Considering a solid Statement solution Preferrably BLoC.
+2. Lean more towars Clean Coding architecture adding remote source, repository and service layers
+3. Migrate to cloud database for online uses (like supabase, firebase) and sync, backups, and conflict handling.
+4. Create proper authenticaion using firebase auth, OAuths etc.
 
-A few resources to get you started if this is your first Flutter project:
+## Run the app
+1. Install Flutter and set up your environment.
+2. From the project root, get dependencies:
+```bash
+flutter pub get
+```
+3. Run on a connected device/emulator:
+```bash
+flutter run
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Build APK
+```bash
+flutter build apk
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Build App Bundle (AAB)
+```bash
+flutter build appbundle
+```
